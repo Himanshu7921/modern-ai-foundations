@@ -168,8 +168,3 @@ Upon graduation from this curriculum, developers are equipped to:
 * Deploy production-level Convolutional Neural Networks within the PyTorch ecosystem.
 * Engineer vector search, tokenization pipelines, and contextual prompt frameworks using RAG workflows.
 * Seamlessly progress toward state-of-the-art specialization sub-fields including Transformers, Large Language Models (LLMs), Diffusion Architectures, and Multimodal Artificial Intelligence.
-
-
-----
-
-# Testing something
