@@ -77,7 +77,7 @@ Follow these steps to configure your local development environment and start the
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/himanshu7921/modern-ai-foundations.git
+git clone https://github.com/Himanshu7921/modern-ai-foundations.git
 cd modern-ai-foundations
 ```
 ### 2. Install Dependencies
