@@ -17,3 +17,9 @@ class LinearLayers:
         self.db = out_grad.sum(axis = 0)
         self.dx = out_grad @ self.W.T
         return self.dx
+    
+    def __call__(self, x):
+        return self.forward(x)
+    
+    def param(self):
+        return [self.W] + [self.b]
