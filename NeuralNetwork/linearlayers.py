@@ -21,5 +21,5 @@ class LinearLayers:
     def __call__(self, x):
         return self.forward(x)
     
-    def param(self):
-        return [self.W] + [self.b]
+    def params(self):
+        return [(self.W, self.dW), (self.b, self.db)]

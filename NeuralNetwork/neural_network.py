@@ -28,15 +28,16 @@ class NeuralNetwork:
     def __call__(self, x):
         return self.forward(x)
     
-    def param(self):
-        self.param = []
+    def params(self):
+        params = []
         for layer in self.layers:
-            self.param.append(layer.param.item())
+            params.extend(layer.params())
+        return params
 
 
 if __name__ == "__main__":
     import numpy as np
-    nn = NeuralNetwork(in_features = 3, hidden_dim = 10, out_features = 2, n_layers = 5)
+    nn = NeuralNetwork(in_features = 3, hidden_dim = 10, out_features = 2, n_layers = 3)
     y_true = [0, 1]
     x = np.random.rand(1, 3)
     logits = nn(x) # forward pass execute ho jayega
@@ -44,17 +45,16 @@ if __name__ == "__main__":
     grad = nn.backward(dL_dy) # forward pass execute ho jayega
     print(f"Gradients of weights Layer-1: {nn.layers[0].dW}")
     print(f"Gradients of bias for Layer-1: {nn.layers[0].db}")
-    # nn.param()
-    # print(nn.param)
-    # epochs = 1000
-    # lr = 0.0001
-    # for i in range(epochs):
-    #     logits = nn(x) # forward pass execute ho jayega
-    #     mse_loss = np.mean((y_true - logits) ** 2)
-    #     dL_dy = (-2 / len(y_true)) * (y_true - logits)
+    epochs = 1000
+    lr = 0.0001
+    for i in range(epochs):
+        logits = nn(x) # forward pass execute ho jayega
+        mse_loss = np.mean((y_true - logits) ** 2)
+        dL_dy = (-2 / len(y_true)) * (y_true - logits)
+        nn.backward(dL_dy)
+        for param, grad in nn.params():
+            param -= lr * grad
 
-    #     nn.param
-        
-    #     if i % 100 == 0:
-    #         print(f"Epoch = [{i}/{epochs}] | Loss = {mse_loss:.4f}")
+        if i % 100 == 0:
+            print(f"Epoch = [{i}/{epochs}] | Loss = {mse_loss:.4f}")
 
